@@ -24,7 +24,7 @@ pip install -r requirements.txt
 4. Configure environment
    - Copy `.env.example` to `.env` and add your key
 ```env
-GOOGLE_API_KEY=YOUR_API_KEY
+GOOGLE_API_KEY=AIzaSyDDm-67XDbsypufy4F5eWqvzPTSE77-jKI
 GEMINI_MODEL=gemini-1.5-flash
 ```
 5. Run
