@@ -14,4 +14,4 @@ COPY . /app
 # Cloud Run provides $PORT
 ENV PORT=8080
 
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:${PORT}", "app:app"]
+CMD gunicorn -w 2 -b 0.0.0.0:$PORT app:app
