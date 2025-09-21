@@ -24,7 +24,7 @@ pip install -r requirements.txt
 4. Configure environment
    - Copy `.env.example` to `.env` and add your key
 ```env
-GOOGLE_API_KEY=AIzaSyDDm-67XDbsypufy4F5eWqvzPTSE77-jKI
+GOOGLE_API_KEY=your api key
 GEMINI_MODEL=gemini-1.5-flash
 ```
 5. Run
@@ -48,7 +48,7 @@ gcloud run deploy artisan-ai \
 3. Set env var (if not set during deploy)
 ```powershell
 gcloud run services update artisan-ai \
-  --set-env-vars GOOGLE_API_KEY=AIzaSyDDm-67XDbsypufy4F5eWqvzPTSE77-jKI \
+  --set-env-vars GOOGLE_API_KEY=your api key \
   --region asia-south1
 ```
 
