@@ -48,7 +48,7 @@ gcloud run deploy artisan-ai \
 3. Set env var (if not set during deploy)
 ```powershell
 gcloud run services update artisan-ai \
-  --set-env-vars GOOGLE_API_KEY=YOUR_KEY \
+  --set-env-vars GOOGLE_API_KEY=AIzaSyDDm-67XDbsypufy4F5eWqvzPTSE77-jKI \
   --region asia-south1
 ```
 
