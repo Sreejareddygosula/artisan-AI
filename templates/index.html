@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Templates</h2>
+  <div class="grid">
+    <div>
+      <label>Quick Templates</label>
+      <select id="template">
+        <option value="">— Choose a template —</option>
+        <option value="festival">Festival Promo (Diwali/Holi)</option>
+        <option value="seasonal">Seasonal Drop (Summer/Winter)</option>
+        <option value="eco">Eco-Friendly Campaign</option>
+        <option value="gifts">Gifting Campaign</option>
+        <option value="local_fair">Local Fair/Pop-up</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Craft Details</h2>
+  <div class="grid">
+    <div>
+      <label>Artisan Name</label>
+      <input id="artisan_name" placeholder="e.g., Lakshmi Devi"/>
+    </div>
+    <div>
+      <label>Craft Type</label>
+      <input id="craft_type" placeholder="e.g., Madhubani painting"/>
+    </div>
+    <div>
+      <label>Region</label>
+      <input id="region" placeholder="e.g., Bihar, India"/>
+    </div>
+    <div>
+      <label>Materials / Techniques</label>
+      <input id="materials" placeholder="e.g., Natural dyes, handmade brushes"/>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Product & Audience</h2>
+  <div class="grid">
+    <div>
+      <label>Product Name</label>
+      <input id="product_name" placeholder="e.g., Hand-painted Silk Scarf"/>
+    </div>
+    <div>
+      <label>Key Attributes</label>
+      <input id="product_attributes" placeholder="e.g., lightweight, eco-friendly, handwoven"/>
+    </div>
+    <div>
+      <label>Target Audience</label>
+      <input id="audience" placeholder="e.g., eco-conscious millennials, gift seekers"/>
+    </div>
+    <div>
+      <label>Tone</label>
+      <select id="tone">
+        <option>Warm</option>
+        <option>Elegant</option>
+        <option>Minimal</option>
+        <option>Festive</option>
+        <option>Bold</option>
+      </select>
+    </div>
+    <div>
+      <label>Language</label>
+      <select id="lang">
+        <option>English</option>
+        <option>Hindi</option>
+        <option>Tamil</option>
+        <option>Bengali</option>
+        <option>Marathi</option>
+      </select>
+    </div>
+    <div>
+      <label>Content Type</label>
+      <select id="type">
+        <option value="story">Artisan Story</option>
+        <option value="description">Product Description</option>
+        <option value="caption">Social Captions (x3)</option>
+        <option value="hashtags">Hashtags</option>
+        <option value="ad_copy">Ad Copy (x2)</option>
+      </select>
+    </div>
+    <div>
+      <label>Platform</label>
+      <select id="platform">
+        <option>Generic</option>
+        <option>Instagram</option>
+        <option>Etsy</option>
+        <option>Amazon</option>
+      </select>
+    </div>
+  </div>
+  <button id="generate_btn" class="btn">Generate</button>
+</section>
+
+<section class="card">
+  <h2>Image Assist (optional)</h2>
+  <div class="grid">
+    <div>
+      <input type="file" id="image" accept="image/png, image/jpeg, image/webp"/>
+    </div>
+  </div>
+  <button id="analyze_btn" class="btn">Analyze Image & Suggest Captions</button>
+</section>
+
+<section class="card">
+  <h2>Output</h2>
+  <div class="output-toolbar">
+    <button id="copy_btn" class="btn btn-small">Copy</button>
+    <button id="download_btn" class="btn btn-small">Download .txt</button>
+  </div>
+  <pre id="output" class="output"></pre>
+</section>
+  <section class="card">
+    <h2>Video Reel (beta)</h2>
+    <div class="grid">
+      <div>
+        <label>Images (order matters)</label>
+        <input type="file" id="images" accept="image/png, image/jpeg, image/webp" multiple />
+      </div>
+      <div>
+        <label>Background Music (optional)</label>
+        <input type="file" id="audio" accept="audio/mpeg, audio/mp3, audio/wav, audio/aac, audio/ogg" />
+      </div>
+      <div>
+        <label>Per-slide Captions (one line per image)</label>
+        <textarea id="captions" rows="4" placeholder="Line 1 for image 1&#10;Line 2 for image 2&#10;..."></textarea>
+      </div>
+      <div>
+        <label>Slide Duration (seconds)</label>
+        <input id="duration" type="number" min="0.5" step="0.1" value="2.5" />
+      </div>
+      <div>
+        <label>Size (e.g., 720x720)</label>
+        <input id="size" placeholder="720x720" value="720x720" />
+      </div>
+      <div>
+        <label>Fit</label>
+        <select id="fit">
+          <option value="cover" selected>Cover</option>
+          <option value="contain">Contain</option>
+        </select>
+      </div>
+      <div>
+        <label>Font Size</label>
+        <input id="font_size" type="number" min="10" max="96" value="36" />
+      </div>
+      <div>
+        <label>Logo (optional)</label>
+        <input type="file" id="logo" accept="image/png, image/jpeg, image/webp" />
+      </div>
+      <div>
+        <label>Logo Size (%)</label>
+        <input id="logo_size" type="number" min="5" max="40" value="15" />
+      </div>
+      <div>
+        <label>Logo Position</label>
+        <select id="logo_pos">
+          <option value="bottom-right" selected>Bottom-right</option>
+          <option value="bottom-left">Bottom-left</option>
+          <option value="top-right">Top-right</option>
+          <option value="top-left">Top-left</option>
+        </select>
+      </div>
+    </div>
+    <button id="video_btn" class="btn">Generate Video</button>
+  </section>
+
+{% endblock %}

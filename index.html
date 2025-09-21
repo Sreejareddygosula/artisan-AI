@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisan AI Assistant – Project Landing</title>
+  <style>
+    :root {
+      --bg: #0f172a; --fg: #e2e8f0; --muted: #94a3b8; --card: #111827;
+      --accent: #22c55e; --accent-2: #16a34a; --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; background: var(--bg); color: var(--fg); }
+    .container { max-width: 880px; margin: 0 auto; padding: 28px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--border); border-radius:12px; padding:18px; margin-bottom:16px; }
+    h1,h2 { margin: 0 0 10px; }
+    p { color: var(--muted); }
+    code, pre { background:#0b1220; color:#e6fbe6; padding:2px 6px; border-radius:6px; }
+    .btn { display:inline-block; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color:#07120b; text-decoration:none; padding:12px 18px; border-radius:10px; font-weight:700; margin-top:10px; }
+    ul { margin-top:6px; }
+    li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Artisan AI Assistant</h1>
+      <p>Flask + Google Gemini app to help artisans create authentic stories, descriptions, captions, hashtags, and ad copy. Optional image analysis powered by Gemini Vision.</p>
+      <a class="btn" href="http://localhost:5000" target="_blank" rel="noopener">Open App (Localhost)</a>
+    </div>
+
+    <div class="card">
+      <h2>How to run locally</h2>
+      <ol>
+        <li>Python 3.10+ recommended</li>
+        <li>In PowerShell:
+          <pre>python -m venv .venv
+. .\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt</pre>
+        </li>
+        <li>Copy <code>.env.example</code> to <code>.env</code> and set <code>GOOGLE_API_KEY</code></li>
+        <li>Start the server:
+          <pre>python app.py</pre>
+        </li>
+        <li>Open: <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a></li>
+      </ol>
+      <p><strong>Note:</strong> This static index.html is only a landing page. The live app UI is rendered from <code>templates/index.html</code> by Flask.</p>
+    </div>
+
+    <div class="card">
+      <h2>API Endpoints</h2>
+      <ul>
+        <li><code>POST /api/generate</code> – Generate text (story, description, captions, hashtags, ad copy)</li>
+        <li><code>POST /api/analyze-image</code> – Upload image + optional fields to extract attributes and suggest captions</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Cloud Run (optional)</h2>
+      <p>Use the included <code>Dockerfile</code> and follow the steps in <code>README.md</code> to deploy.</p>
+    </div>
+  </div>
+</body>
+</html>

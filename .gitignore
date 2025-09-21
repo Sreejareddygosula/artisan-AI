@@ -1,0 +1,24 @@
+# Environment and secrets
+.env
+.env.*
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS/Editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Caches/Logs
+pytest_cache/
+*.log
+
+# Build/Dist
+build/
+dist/
