@@ -17,15 +17,20 @@ app = Flask(__name__)
 # Increase upload limit to accommodate multiple images and optional audio (64 MB)
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024 * 1024  # 64 MB upload limit
 
-API_KEY = os.getenv("GOOGLE_API_KEY")
 MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
 
-if not API_KEY:
-    raise RuntimeError("GOOGLE_API_KEY not set. Put it in .env or environment variables.")
+# Lazy initialize the Gemini model so the UI can load even if the key is missing
+_model = None
 
-# Configure SDK and model
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel(MODEL_NAME)
+def get_model() -> genai.GenerativeModel:
+    global _model
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise RuntimeError("GOOGLE_API_KEY not set. Put it in .env or environment variables.")
+    if _model is None:
+        genai.configure(api_key=api_key)
+        _model = genai.GenerativeModel(MODEL_NAME)
+    return _model
 
 
 def _platform_guidance(platform: str, content_type: str) -> str:
@@ -119,7 +124,7 @@ def generate_text():
             "max_output_tokens": 512,
         }
 
-        resp = model.generate_content(
+        resp = get_model().generate_content(
             prompt,
             generation_config=generation_config,
         )
@@ -168,7 +173,7 @@ def analyze_image():
         )
 
         image_part = {"mime_type": mime, "data": image_bytes}
-        resp = model.generate_content([prompt, image_part])
+        resp = get_model().generate_content([prompt, image_part])
         text = resp.text.strip() if hasattr(resp, "text") and resp.text else "No content generated."
         return jsonify({"ok": True, "result": text})
     except Exception as e:
